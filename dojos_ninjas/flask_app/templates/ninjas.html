@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja</title>
+    <style>
+        .drop_down{
+            display: flex;
+        }
+        .btn{
+            background-color: turquoise;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <h2>New Ninja</h2>
+    <form action="/ninjas/add_to_db" method="POST">
+        <div class="drop_down">
+            <label for="dojo">Dojo:</label>
+            <select name="dojo_id">
+                {% for dojos in all_dojos %}
+                <option value="{{ dojos.id }}">{{ dojos.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" name="first_name" id="first_name">
+        </div>
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" name="last_name" id="last_name">
+        </div>
+        <div class="form-group">
+            <label>Age:</label>
+            <input type="number" name="age" id="age">
+        </div>
+        <input type="submit" value="Create" class="offset-btn">
+    </form>
+    <a href="/dojos">Home</a>
+</body>
+</html>
